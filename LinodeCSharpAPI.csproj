@@ -7,7 +7,7 @@
     <ProjectGuid>{29FA9689-0E4C-475D-AF92-E6CFA6AEF027}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LinodeCSharpAPI</RootNamespace>
+    <RootNamespace>JTraverso.LinodeCSharpAPI</RootNamespace>
     <AssemblyName>LinodeCSharpAPI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.5.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -44,13 +47,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Authentication.cs" />
-    <Compile Include="Core\Constants.cs" />
+    <Compile Include="Core\BatchRequest.cs" />
+    <Compile Include="Core\BatchResponse.cs" />
+    <Compile Include="Core\IResponse.cs" />
+    <Compile Include="Core\Payloads\Linode\LinodeUpdatePayload.cs" />
+    <Compile Include="Core\Payloads\Linode\LinodeShutdownPayload.cs" />
+    <Compile Include="Core\Payloads\Linode\LinodeResizePayload.cs" />
+    <Compile Include="Core\Payloads\Linode\LinodeRebootPayload.cs" />
+    <Compile Include="Core\Payloads\Linode\LinodeListPayload.cs" />
+    <Compile Include="Core\Payloads\Linode\LinodeDeletePayload.cs" />
+    <Compile Include="Core\Payloads\Linode\LinodeCreatePayload.cs" />
+    <Compile Include="Core\Payloads\Linode\LinodeClonePayload.cs" />
+    <Compile Include="Core\Payloads\Linode\LinodeBootPayload.cs" />
+    <Compile Include="Core\Utils.cs" />
+    <Compile Include="Core\IRequest.cs" />
     <Compile Include="Core\Network.cs" />
+    <Compile Include="Core\Payloads\IResponsePayload.cs" />
+    <Compile Include="Core\Payloads\TestPayload.cs" />
     <Compile Include="Core\Request.cs" />
     <Compile Include="Core\Response.cs" />
     <Compile Include="LinodeAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tests\unit\Core\BatchRequestTest.cs" />
+    <Compile Include="tests\unit\Core\BatchResponseTest.cs" />
     <Compile Include="tests\unit\Core\RequestTest.cs" />
+    <Compile Include="tests\unit\Core\ResponseTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DNS\" />
