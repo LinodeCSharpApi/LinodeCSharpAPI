@@ -146,7 +146,7 @@ namespace LinodeCSharpAPI.Core
         public string getPOSTString()
         {
             //TODO
-            return this;
+            return "";
         }
     }
 }
