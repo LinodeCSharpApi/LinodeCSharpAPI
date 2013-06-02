@@ -8,5 +8,7 @@ namespace LinodeCSharpAPI.Core
 {
     class Network
     {
+        private string linodeEndpoint = "https://api.linode.com/";
+
     }
 }

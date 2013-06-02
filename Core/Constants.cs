@@ -50,6 +50,7 @@ namespace LinodeCSharpAPI.Core
         MUST_HAVE_NO_DISKS = 41,
 
     }
+
     static class Constants
     {
  

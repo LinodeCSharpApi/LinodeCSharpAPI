@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace LinodeCSharpAPI
 {
-    class LinodeAPI
+    public class LinodeAPI
     {
+        private string userName;
+        private string apiKey;
+
+
     }
 }
