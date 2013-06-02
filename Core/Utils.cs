@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JTraverso.LinodeCSharpAPI.Core.Payloads;
+using System;
 
-namespace LinodeCSharpAPI.Core
+namespace JTraverso.LinodeCSharpAPI.Core
 {
     /*
         0: ok
@@ -51,8 +48,19 @@ namespace LinodeCSharpAPI.Core
 
     }
 
-    static class Constants
+    static class Utils
     {
- 
+        public static IResponsePayload GetPayloadClass(string action)
+        {
+            try
+            {
+                string className = action.Substring(0, 1).ToString().ToUpper() + String.Join("", action.Substring(1));
+                return (IResponsePayload)Activator.CreateInstance(Type.GetType("JTraverso.LinodeCSharpAPI.Core.Payloads." + className + "Payload"));
+            }
+            catch (Exception classException)
+            {
+                return null;
+            }
+        }
     }
 }
