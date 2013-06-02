@@ -36,7 +36,7 @@ namespace LinodeCSharpAPI.Core
         /// <param name="name">Parameter's name</param>
         /// <param name="value">Parameter's value</param>
         /// <returns>Request object, or false in case of error.</returns>
-        public object addParam(string name, string value)
+        public object AddParam(string name, string value)
         {
             if (name == "api_action")
             {
@@ -69,7 +69,7 @@ namespace LinodeCSharpAPI.Core
         /// </summary>
         /// <param name="name">Parameter's name</param>
         /// <returns>Boolean</returns>
-        public bool hasParam(string name)
+        public bool HasParam(string name)
         {
             return this.parameters.ContainsKey(name);
         }
@@ -79,7 +79,7 @@ namespace LinodeCSharpAPI.Core
         /// </summary>
         /// <param name="name">Parameter's name</param>
         /// <returns>Request object, or false in case of error.</returns>
-        public object removeParam(string name)
+        public object RemoveParam(string name)
         {
             if (name == "api_action")
             {
@@ -102,18 +102,24 @@ namespace LinodeCSharpAPI.Core
         /// Gets a parameter's value.
         /// </summary>
         /// <param name="name">Parameter's name</param>
-        /// <returns>The parameter value, or false in case of error.</returns>
-        public object getParam(string name) 
+        /// <returns>The parameter value, or null in case of error / unexistent parameter.</returns>
+        public object GetParam(string name) 
         {
             string output;
+            bool retVal;
             
             try
             {
-                this.parameters.TryGetValue(name, out output);
+                retVal = this.parameters.TryGetValue(name, out output);
             }
             catch (ArgumentNullException argNullException)
             {
-                return false;
+                return null;
+            }
+
+            if (!retVal) 
+            {
+                output = null;
             }
 
             return output;
@@ -124,7 +130,7 @@ namespace LinodeCSharpAPI.Core
         /// </summary>
         /// <param name="action">API Action</param>
         /// <returns>Request object.</returns>
-        public object setApiAction(string action)
+        public object SetApiAction(string action)
         {
             this.action = action;
             return this;
@@ -134,7 +140,7 @@ namespace LinodeCSharpAPI.Core
         /// Gets the Request's action
         /// </summary>
         /// <returns>Request's action string.</returns>
-        public string getApiAction()
+        public string GetApiAction()
         {
             return this.action;
         }
@@ -143,10 +149,17 @@ namespace LinodeCSharpAPI.Core
         /// Gets all the Request's parameters and api_action encoded for HTTP POST.
         /// </summary>
         /// <returns>HTTP POST String</returns>
-        public string getPOSTString()
+        public string GetPOSTString()
         {
-            //TODO
-            return "";
+            string output = "api_action=" + this.GetApiAction() + "&";
+            foreach (KeyValuePair<string, string> parameter in parameters)
+            {
+                output = output + parameter.Key + "=" + parameter.Value + "&";
+            }
+
+            output = output.TrimEnd('&');
+
+            return output;
         }
     }
 }
