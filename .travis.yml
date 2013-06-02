@@ -1,7 +1,7 @@
 ﻿language: c
 
 install:
-  - sudo apt-get install mono-devel mono-gmcs nunit-console libnewtonsoft-json-cil-dev
+  - sudo apt-get install mono-devel mono-gmcs nunit-console newtonsoft-json
 
 env:
   - EnableNuGetPackageRestore=true
