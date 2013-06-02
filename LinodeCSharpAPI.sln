@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinodeCSharpAPI", "LinodeCSharpAPI.csproj", "{29FA9689-0E4C-475D-AF92-E6CFA6AEF027}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinodeCSharpAPIEXample", "..\LinodeCSharpAPIEXample\LinodeCSharpAPIEXample.csproj", "{D7F6C93D-F935-4389-8BC7-566EC372681B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinodeCSharpAPIEXample", "LinodeCSharpAPIEXample\LinodeCSharpAPIEXample.csproj", "{D7F6C93D-F935-4389-8BC7-566EC372681B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
