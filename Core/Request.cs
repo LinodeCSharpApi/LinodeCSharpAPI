@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LinodeCSharpAPI.Core
+namespace JTraverso.LinodeCSharpAPI.Core
 {
     /// <summary>
     /// Linode API Request Object. Contains the action and the associated parameters, 
     /// except authentication related parameters like username or apikey.
     /// </summary>
-    class Request
+    class Request : IRequest
     {
         /// <summary>
         /// Request's parameters
@@ -151,13 +148,24 @@ namespace LinodeCSharpAPI.Core
         /// <returns>HTTP POST String</returns>
         public string GetPOSTString()
         {
-            string output = "api_action=" + this.GetApiAction() + "&";
+            string output = "api_action=" + this.GetApiAction();
             foreach (KeyValuePair<string, string> parameter in parameters)
             {
-                output = output + parameter.Key + "=" + parameter.Value + "&";
+                output = output + "&" + parameter.Key + "=" + parameter.Value;
             }
 
-            output = output.TrimEnd('&');
+            return output;
+        }
+
+        public string GetJSON()
+        {
+            string output = "{\"api_action\": \"" + this.GetApiAction() + "\"";
+            foreach (KeyValuePair<string, string> parameter in parameters)
+            {
+                output = output + ", \"" + parameter.Key + "\": \"" + parameter.Value + "\""; 
+            }
+
+            output = output + "}";
 
             return output;
         }

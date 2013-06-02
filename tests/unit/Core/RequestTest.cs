@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using JTraverso.LinodeCSharpAPI.Core;
 using NUnit.Framework;
-using LinodeCSharpAPI.Core;
 
-namespace LinodeCSharpAPI.tests.unit.Core
+namespace JTraverso.LinodeCSharpAPI.tests.unit.Core
 {
     [TestFixture]
     class RequestTest
@@ -93,6 +89,19 @@ namespace LinodeCSharpAPI.tests.unit.Core
 
             string expected = "api_action=unitTest&testParam=testValue&test=echo&myParam=myValue&another=one";
             Assert.AreEqual(expected, this.testObject.GetPOSTString());
+        }
+
+        [Test]
+        public void GetJSON()
+        {
+            this.testObject.SetApiAction("unitTest");
+            this.testObject.AddParam("testParam", "testValue");
+            this.testObject.AddParam("test", "echo");
+            this.testObject.AddParam("myParam", "myValue");
+            this.testObject.AddParam("another", "one");
+
+            string expected = "{\"api_action\": \"unitTest\", \"testParam\": \"testValue\", \"test\": \"echo\", \"myParam\": \"myValue\", \"another\": \"one\"}";
+            Assert.AreEqual(expected, this.testObject.GetJSON());
         }
     }
 }
