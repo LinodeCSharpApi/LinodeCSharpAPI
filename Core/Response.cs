@@ -9,18 +9,26 @@ namespace JTraverso.LinodeCSharpAPI.Core
     {
         public string JSONString { get; private set; }
         public Collection<IResponsePayload> Payloads { get; private set; }
-        public string[] ErrorArray { get; private set; }
+        public Collection<ErrorPayload> Errors { get; private set; }
         public string Action { get; private set; }
 
         public Response(string JSONResponse)
         {
             this.JSONString = JSONResponse;
-            JObject baseObject = JObject.Parse(JSONResponse.Replace("\"DATA\":{","\"DATA\":[{").Replace("}}","}]}"));
+            JObject baseObject = JObject.Parse(JSONResponse.Replace("\"DATA\":{", "\"DATA\":[{").Replace("}}", "}]}"));
 
-            this.ErrorArray = baseObject["ERRORARRAY"].ToObject<string[]>();
             this.Action = baseObject["ACTION"].ToObject<string>();
             this.Payloads = new Collection<IResponsePayload>();
+            this.Errors = new Collection<ErrorPayload>();
+            
+            JEnumerable<JToken> errChildrens = baseObject["ERRORARRAY"].Children();
+            foreach (JToken child in errChildrens)
+            {
+                ErrorPayload errPayload = new ErrorPayload();
+                errPayload.Deserialize(child);
 
+                this.Errors.Add(errPayload);
+            }
             JEnumerable<JToken> childrens = baseObject["DATA"].Children();
             foreach (JToken child in childrens)
             {

@@ -51,6 +51,7 @@
     <Compile Include="Core\BatchRequest.cs" />
     <Compile Include="Core\BatchResponse.cs" />
     <Compile Include="Core\IResponse.cs" />
+    <Compile Include="Core\Payloads\ErrorPayload.cs" />
     <Compile Include="Core\Payloads\Linode\LinodeUpdatePayload.cs" />
     <Compile Include="Core\Payloads\Linode\LinodeShutdownPayload.cs" />
     <Compile Include="Core\Payloads\Linode\LinodeResizePayload.cs" />
