@@ -8,9 +8,6 @@ namespace LinodeCSharpAPI
 {
     public class LinodeAPI
     {
-        private string userName;
-        private string apiKey;
-
 
     }
 }
