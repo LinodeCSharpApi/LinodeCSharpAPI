@@ -3,6 +3,13 @@
 install:
   - sudo apt-get install mono-devel mono-gmcs nunit-console
 
+env:
+  - EnableNuGetPackageRestore=true
+
+branches:
+  only:
+    - master
+
 script:
   - xbuild CI.proj
   - nunit-console ./bin/Debug/LinodeCSharpAPI.dll -exclude Integration,NotWorkingOnMono
