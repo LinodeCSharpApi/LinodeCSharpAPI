@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Threading;
 
-namespace LinodeCSharpAPI.Core
+namespace JTraverso.LinodeCSharpAPI.Core
 {
     class Network
     {
@@ -67,7 +66,7 @@ namespace LinodeCSharpAPI.Core
                     response = (HttpWebResponse)request.EndGetResponse(asynchronousResult);
                     dataReady.Set();
                 }
-                catch (Exception e)
+                catch (Exception netException)
                 {
                     dataReady.Set();
                 }
