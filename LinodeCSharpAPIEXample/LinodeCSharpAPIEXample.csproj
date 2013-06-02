@@ -48,7 +48,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LinodeCSharpAPI\LinodeCSharpAPI.csproj">
+    <ProjectReference Include="..\LinodeCSharpAPI.csproj">
       <Project>{29fa9689-0e4c-475d-af92-e6cfa6aef027}</Project>
       <Name>LinodeCSharpAPI</Name>
     </ProjectReference>
