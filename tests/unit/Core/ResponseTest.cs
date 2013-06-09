@@ -32,9 +32,7 @@ namespace JTraverso.LinodeCSharpAPI.tests.unit.Core
             string rawPayload = "{\"ERRORARRAY\":[{\"ERRORCODE\": 0,\"ERRORMESSAGE\": \"ok\"}], \"ACTION\":\"test\", \"DATA\":{\"Test\":\"unit\"}}";
             this.testObject = new Response(rawPayload);
 
-            Assert.AreEqual(1, this.testObject.Errors.Count);
             Assert.AreEqual("test", this.testObject.Action);
-            Assert.AreEqual(1, this.testObject.Payloads.Count);
             Assert.AreEqual("unit", ((TestPayload)this.testObject.Payloads[0]).Test);
         }
     }
