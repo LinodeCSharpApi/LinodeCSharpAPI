@@ -1,4 +1,4 @@
-﻿using JTraverso.LinodeCSharpAPI.Core;
+﻿using JTraverso.LinodeCSharpAPI;
 
 namespace LinodeCSharpAPIEXample
 {
@@ -6,6 +6,7 @@ namespace LinodeCSharpAPIEXample
     {
         static void Main(string[] args)
         {
+            LinodeAPI api = new LinodeAPI();
             /*string errorPayload = "{\"ERRORARRAY\":[1,24,20], \"ACTION\":\"test\", \"DATA\":[{\"Test\":\"unit\"},{\"Test\":\"unit2\"},{\"Test\":\"unit\"}]}";
             Response errorObject = new Response(errorPayload);
 

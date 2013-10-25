@@ -25,15 +25,5 @@ namespace JTraverso.LinodeCSharpAPI.tests.unit.Core
             Assert.AreEqual(1, this.testObject.Payloads.Count);
             Assert.AreEqual("unit", ((TestPayload)this.testObject.Payloads[0]).Test);
         }
-
-        [Test]
-        public void TestWithErrorArray()
-        {
-            string rawPayload = "{\"ERRORARRAY\":[{\"ERRORCODE\": 0,\"ERRORMESSAGE\": \"ok\"}], \"ACTION\":\"test\", \"DATA\":{\"Test\":\"unit\"}}";
-            this.testObject = new Response(rawPayload);
-
-            Assert.AreEqual("test", this.testObject.Action);
-            Assert.AreEqual("unit", ((TestPayload)this.testObject.Payloads[0]).Test);
-        }
     }
 }

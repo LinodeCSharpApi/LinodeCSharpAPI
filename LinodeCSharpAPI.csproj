@@ -50,6 +50,7 @@
     <Compile Include="Core\Authentication.cs" />
     <Compile Include="Core\BatchRequest.cs" />
     <Compile Include="Core\BatchResponse.cs" />
+    <Compile Include="Core\IAction.cs" />
     <Compile Include="Core\IResponse.cs" />
     <Compile Include="Core\Payloads\ErrorPayload.cs" />
     <Compile Include="Core\Payloads\Linode\LinodeUpdatePayload.cs" />
@@ -75,13 +76,7 @@
     <Compile Include="tests\unit\Core\RequestTest.cs" />
     <Compile Include="tests\unit\Core\ResponseTest.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DNS\" />
-    <Folder Include="Linode\" />
-    <Folder Include="NodeBalancer\" />
-    <Folder Include="StackScript\" />
-    <Folder Include="Utility\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="CI.proj" />
     <None Include="packages.config" />
@@ -90,6 +85,7 @@
     <Content Include="Libraries\Newtonsoft.Json.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
