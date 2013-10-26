@@ -31,7 +31,7 @@ namespace JTraverso.LinodeCSharpAPI.Core
         public Response(string JSONResponse)
         {
             this.JSONString = JSONResponse;
-            JObject baseObject = JObject.Parse(JSONResponse.Replace("\"DATA\":{", "\"DATA\":[{").Replace("}}", "}]}"));
+            JObject baseObject = JObject.Parse(JSONResponse);
 
             this.Action = baseObject["ACTION"].ToObject<string>();
             this.Payloads = new Collection<IResponsePayload>();
