@@ -16,7 +16,7 @@
 // 
 namespace JTraverso.LinodeCSharpAPI.Core
 {
-    interface IRequest
+    public interface IRequest
     {
         string GetPOSTString();
         string GetJSON();

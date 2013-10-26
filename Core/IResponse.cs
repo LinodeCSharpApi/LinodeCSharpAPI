@@ -21,7 +21,7 @@ using System.Text;
 
 namespace JTraverso.LinodeCSharpAPI.Core
 {
-    interface IResponse
+    public interface IResponse
     {
         string JSONString { get; }
     }
