@@ -74,6 +74,7 @@
     <Compile Include="tests\unit\Core\BatchResponseTest.cs" />
     <Compile Include="tests\unit\Core\RequestTest.cs" />
     <Compile Include="tests\unit\Core\ResponseTest.cs" />
+    <Compile Include="tests\unit\LinodeApiTest.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
