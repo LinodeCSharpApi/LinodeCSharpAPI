@@ -26,7 +26,6 @@ namespace JTraverso.LinodeCSharpAPI
 {
     public class LinodeAPI
     {
-        Dictionary<string, Type> classes;
         Network network;
 
         public LinodeAPI()
@@ -67,34 +66,27 @@ namespace JTraverso.LinodeCSharpAPI
         /// <param name="auth"></param>
         private void StartApi(Authentication auth)
         {
-            this.classes = getClasses();
             this.network = new Network(auth);
-        }
-
-        public void SetAuthentication(Authentication auth)
-        {
-            this.network.Authentication = auth;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
-        private Dictionary<string, Type> getClasses()
+        /// <param name="auth"></param>
+        public void SetAuthentication(Authentication auth)
         {
-            Assembly currentAssembly = Assembly.GetExecutingAssembly();
-            Dictionary<string, Type> classes = new Dictionary<string, Type>();
-
-            foreach (Type type in currentAssembly.GetTypes())
-            {
-                if (type.Name.Substring(Math.Max(0, type.Name.Length - "Action".Length), Math.Min("Action".Length, type.Name.Length)) == "Action" && type.Name != "IAction")
-                {
-                    classes.Add(type.Name, type);
-                }
-            }
-
-            return classes;
+            this.network.Authentication = auth;
         }
+
+        public IResponse Get(string action, Dictionary<string, string> parameters)
+        {
+            Request req = new Request(action, parameters);
+
+            Response response = new Response(this.network.DoCall(req));
+
+            return response;
+        }
+
     }
 
 }
