@@ -35,33 +35,35 @@ namespace JTraverso.LinodeCSharpAPI.Core
         public Network(Authentication auth)
         {
             this.UserAgent = "";
-            this.Method = HttpMethod.Post;
+            this.Method = HttpMethod.Get;
             this.Authentication = auth;
 
-            this.apiURL = protocol + this.Authentication.UserName + ":" + this.Authentication.ApiKey + "@" + this.apiEndPoint + "/";
+            this.apiURL = protocol + this.apiEndPoint + "/";
+            if (this.Authentication.ApiKey != "" && this.Authentication.UserName != "")
+            {
+                this.apiURL = protocol + this.Authentication.UserName + ":" + this.Authentication.ApiKey + "@" + this.apiEndPoint + "/";
+            }
         }
 
         public string DoCall(Request apiRequest)
         {
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(apiURL);
+            string url = apiURL + "?" + apiRequest.GetPOSTString();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = this.Method;
             request.UserAgent = this.UserAgent;
 
             request.AllowWriteStreamBuffering = true;
             request.Method = this.Method;
-            string post = apiRequest.GetPOSTString();
-            request.ContentLength = post.Length;
-            request.ContentType = "application/x-www-form-urlencoded";
-
-            StreamWriter writer = new StreamWriter(request.GetRequestStream());
-            writer.Write(post);
+            request.ContentLength = 0;
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             using (var sr = new StreamReader(response.GetResponseStream()))
             {
                 string resultado = sr.ReadToEnd();
-                ResultAvailable(this, new ResultEventArgs(resultado));
+                if (ResultAvailable != null)
+                {
+                    ResultAvailable(this, new ResultEventArgs(resultado));
+                }
                 return resultado;
             }
         }
