@@ -17,7 +17,7 @@ namespace JTraverso.LinodeCSharpAPI.tests.unit.Core
         [Test]
         public void TestSimple()
         {
-            string rawPayload = "{\"ERRORARRAY\":[], \"ACTION\":\"test\", \"DATA\":{\"Test\":\"unit\"}}";
+            string rawPayload = "{\"ERRORARRAY\":[], \"ACTION\":\"test\", \"DATA\":[{\"Test\":\"unit\"}]}";
             this.testObject = new Response(rawPayload);
 
             Assert.IsEmpty(this.testObject.Errors);
